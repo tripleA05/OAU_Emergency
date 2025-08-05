@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:oau_emergency_1/screens/signin_screen.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
 
 class PasswordUpdatedScreen extends StatelessWidget {
   const PasswordUpdatedScreen({super.key});
@@ -18,8 +18,8 @@ class PasswordUpdatedScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            Icons.cancel_outlined,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
             color: appbarIconColor,
             size: 30.0,
           ),
@@ -56,9 +56,11 @@ class PasswordUpdatedScreen extends StatelessWidget {
               text: 'Back to Sign In',
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SigninScreen()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SigninScreen(),
+                  ),
+                );
               },
             )
           ],

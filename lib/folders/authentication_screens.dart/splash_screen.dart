@@ -3,11 +3,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/screens/onboarding_screen.dart';
-import 'package:oau_emergency_1/screens/signin_screen.dart';
-// import 'package:oau_emergency_1/screens/signup_screen.dart';
-import 'package:oau_emergency_1/sharedpreference.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/onboarding_screen.dart';
+// import 'package:oau_emergency_1/screens/signin_screen.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/signup_screen.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/sharedpreference.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const SigninScreen(),
+              builder: (context) => const SignupScreen(),
             ),
           );
         } else {
@@ -43,19 +43,6 @@ class _SplashScreenState extends State<SplashScreen> {
       },
     );
     super.initState();
-    // void initState() {
-    //   Timer(
-    //     const Duration(seconds: 10),
-    //     () async {
-    //       bool hasSeenIntro = await Shared.getFullName() ?? false;
-    //       if (hasSeenIntro) {
-    //         Navigator.of(context).pushReplacementNamed('SignupScreen()');
-    //       } else {
-    //         Navigator.of(context).pushReplacementNamed('OnboardingScreen()');
-    //       }
-    //     },
-    //   );
-    //   super.initState();
   }
 
   @override
@@ -82,16 +69,6 @@ class _SplashScreenState extends State<SplashScreen> {
             textAlign: TextAlign.center,
           ),
         ),
-        // Text(
-        //   'OAU\nEmergency',
-        //   // style: TextStyle(
-        //   //   fontSize: 40.0,
-        //   //   color: whitecolor,
-        //   //   fontWeight: FontWeight.w900,
-        //   //   fontFamily: 'Rubik',
-        //   // ),
-        //   textAlign: TextAlign.center,
-        // ),
       ),
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oau_emergency_1/screens/splash_screen.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

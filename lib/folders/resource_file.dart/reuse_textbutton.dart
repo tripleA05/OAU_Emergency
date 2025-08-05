@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oau_emergency_1/constant.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 
 class ReuseTextButton extends StatelessWidget {
   const ReuseTextButton({
@@ -9,11 +9,11 @@ class ReuseTextButton extends StatelessWidget {
   });
 
   final String? text;
-  final Function onPressed;
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed(),
+      onPressed: onPressed,
       style: TextButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
-import 'package:oau_emergency_1/constant.dart';
-// import 'package:oau_emergency_1/home_screen.dart';
-import 'package:oau_emergency_1/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/newpassword_screen.dart';
+// import 'package:oau_emergency_1/screens/newpassword_screen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class ActivateAccountScreen extends StatelessWidget {
-  static const routeName = '/ActivateAccountScreen';
-  ActivateAccountScreen({super.key});
-  final TextEditingController controller = TextEditingController();
+class VerifyForgotPasswordScreen extends StatelessWidget {
+  const VerifyForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +20,8 @@ class ActivateAccountScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            Icons.cancel_outlined,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
             color: appbarIconColor,
             size: 30.0,
           ),
@@ -31,24 +29,24 @@ class ActivateAccountScreen extends StatelessWidget {
       ),
       backgroundColor: whitecolor,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 80, 24, 24),
+        padding: const EdgeInsets.fromLTRB(24, 100, 24, 24),
         child: ListView(
           children: [
-            Text(
-              'Activate Account',
+            const Text(
+              'Forgot Password',
               style: headingTextStyle,
             ),
-            Gap(8),
-            Text(
+            const Gap(8),
+            const Text(
               'Enter verification code sent to',
               style: greyTextStyle,
             ),
-            Gap(8),
-            Text(
+            const Gap(8),
+            const Text(
               '*******afeez@student.oauife.edu.ng',
               style: headingTextStyle16,
             ),
-            Gap(24),
+            const Gap(24),
             Form(
               key: key,
               child: Padding(
@@ -56,16 +54,21 @@ class ActivateAccountScreen extends StatelessWidget {
                   top: 8,
                 ),
                 child: PinCodeTextField(
-                  appContext: context,
-                  pastedTextStyle: TextStyle(
+                  textStyle: const TextStyle(
+                    fontSize: 25,
                     color: primarycolor,
-                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  appContext: context,
+                  pastedTextStyle: const TextStyle(
+                    fontSize: 25,
+                    color: primarycolor,
                     fontWeight: FontWeight.bold,
                   ),
                   length: 5,
-                  controller: controller,
+                  // controller: controller,
                   backgroundColor: whitecolor,
-                  keyboardType: TextInputType.numberWithOptions(),
+                  keyboardType: const TextInputType.numberWithOptions(),
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   pinTheme: PinTheme(
                     fieldWidth: 70,
@@ -77,23 +80,23 @@ class ActivateAccountScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Gap(24),
-            Text(
+            const Gap(24),
+            const Text(
               'Send a new code',
               style: headingTextStyle16,
             ),
-            Gap(85),
+            const Gap(85),
             ReuseTextButton(
               text: 'Confirm',
-              onPressed: () {},
-              // onPressed: () {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const HomeScreen(),
-              //     ),
-              //   );
-              // },
+              // onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NewpasswordScreen(),
+                  ),
+                );
+              },
             )
           ],
         ),

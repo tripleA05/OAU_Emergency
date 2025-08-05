@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/reuse_textbutton.dart';
-import 'package:oau_emergency_1/reuse_textfield.dart';
-import 'package:oau_emergency_1/screens/passwordupdated_screen.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/reuse_passwordtextfield.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/passwordupdated_screen.dart';
 
 class NewpasswordScreen extends StatelessWidget {
   const NewpasswordScreen({super.key});
@@ -17,8 +17,8 @@ class NewpasswordScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            Icons.keyboard_backspace,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
             color: appbarIconColor,
             size: 30.0,
           ),
@@ -30,47 +30,39 @@ class NewpasswordScreen extends StatelessWidget {
             const EdgeInsets.only(top: 100, bottom: 24, left: 24, right: 24),
         child: ListView(
           children: [
-            Text(
+            const Text(
               'New Password',
               style: headingTextStyle,
             ),
-            Gap(8),
-            Text(
+            const Gap(8),
+            const Text(
               'Your password must be different from\n previous password.',
               style: greyTextStyle,
             ),
-            Gap(32),
-            ReuseTextfield(
+            const Gap(32),
+            const ReusePasswordTextfield(
               hintText: 'Password',
-              prefixIcon: Icon(
-                Icons.lock_outline,
-                size: 25,
-              ),
-              obscureText: true,
             ),
-            Gap(12),
-            Text(
+            const Gap(12),
+            const Text(
               'Your password needs to be at least 8 characters long\n'
               'Includes some words and phrases to make it even safer',
               style: greyTextStyle,
             ),
-            Gap(12),
-            ReuseTextfield(
+            const Gap(12),
+            const ReusePasswordTextfield(
               hintText: 'Confirm Password',
-              prefixIcon: Icon(
-                Icons.lock_outline,
-                size: 25,
-              ),
-              obscureText: true,
             ),
-            Gap(270),
+            const Gap(270),
             ReuseTextButton(
               text: 'Continue',
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PasswordUpdatedScreen()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PasswordUpdatedScreen(),
+                  ),
+                );
               },
             ),
           ],

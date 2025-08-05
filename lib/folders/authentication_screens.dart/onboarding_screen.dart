@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:introduction_screen/introduction_screen.dart';
-
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/screens/signin_screen.dart';
-
-import 'package:oau_emergency_1/sharedpreference.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/signup_screen.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/sharedpreference.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -31,27 +28,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       pages: [
         PageViewModel(
-          image: Stack(clipBehavior: Clip.none, children: [
-            Container(
-              height: 230.0,
-              width: 290.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: stackcolor,
-              ),
-            ),
-            Positioned(
-              bottom: -12,
-              right: -12,
-              child: Image.asset(
-                'assets/Frame 1020 (1).png',
-                alignment: Alignment.bottomCenter,
-                fit: BoxFit.cover,
+          image: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
                 height: 230.0,
-                width: 290,
+                width: 290.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: stackcolor,
+                ),
               ),
-            ),
-          ]),
+              Positioned(
+                bottom: -12,
+                right: -12,
+                child: Image.asset(
+                  'assets/Frame 1020 (1).png',
+                  alignment: Alignment.bottomCenter,
+                  fit: BoxFit.cover,
+                  height: 230.0,
+                  width: 290,
+                ),
+              ),
+            ],
+          ),
           title:
               'Stay safe with\n instant emergency\n alerts and quick\n reporting',
           body:
@@ -179,13 +179,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
       onDone: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const SigninScreen(),
+          builder: (context) => const SignupScreen(),
         ));
         Shared.setSeenIntro(true);
       },
       onSkip: () {
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => const SigninScreen(),
+          builder: (context) => const SignupScreen(),
         ));
         Shared.setSeenIntro(true);
       }, // You can override onSkip callback

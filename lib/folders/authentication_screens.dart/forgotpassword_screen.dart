@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/verify_forgotpassword_screen.dart';
 // import 'package:oau_emergency_1/screens/verify_forgotpassword_screen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -18,8 +19,8 @@ class ForgotPasswordScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
-            Icons.keyboard_backspace,
+          icon: const Icon(
+            Icons.arrow_back_rounded,
             color: appbarIconColor,
             size: 30.0,
           ),
@@ -96,14 +97,16 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
             const Gap(309),
             ReuseTextButton(
-              text: 'Confirm', onPressed: () {},
-              // onPressed: () {
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //           builder: (context) =>
-              //               const VerifyForgotPasswordScreen()));
-              // },
+              text: 'Confirm',
+              //  onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const VerifyForgotPasswordScreen(),
+                  ),
+                );
+              },
             )
           ],
         ),

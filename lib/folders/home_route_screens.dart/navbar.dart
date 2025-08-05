@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:oau_emergency_1/constant.dart';
-import 'package:oau_emergency_1/screens/home_screen.dart';
+import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/contact_admin_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/profile_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/home_screen.dart';
 // import 'package:oau_emergency_1/home_screen.dart';
 
 class Navbar extends StatefulWidget {
@@ -17,9 +19,8 @@ class Navbar extends StatefulWidget {
 class _NavbarState extends State<Navbar> {
   final List<Widget> _screens = const [
     HomeScreen(),
-    // NotificationsScreen(),
-    // FavScreen(),
-    // ProfileScreen(),
+    ContactAdminScreen(),
+    ProfileScreen(),
   ];
 
   int selectedPageIndex = 0;
@@ -50,27 +51,27 @@ class _NavbarState extends State<Navbar> {
         },
         items: [
           BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/home.svg',
-                color: selectedPageIndex == 0 ? navbarcolor : null,
+              icon: Icon(
+                Icons.home_outlined, size: 25,
+                // SvgPicture.asset(
+                //   'assets/home.svg',
+                color: selectedPageIndex == 0 ? primarycolor : null,
               ),
               label: ''),
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
-                'assets/message-circle.svg',
-                color: selectedPageIndex == 1 ? navbarcolor : null,
-              ),
-              label: ''),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/heart.svg',
-                color: selectedPageIndex == 2 ? navbarcolor : null,
+                'assets/Contact Icon.svg',
+                height: 25,
+                width: 25,
+                color: selectedPageIndex == 1 ? primarycolor : null,
               ),
               label: ''),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/user.svg',
-              color: selectedPageIndex == 3 ? navbarcolor : null,
+              height: 25,
+              width: 25,
+              color: selectedPageIndex == 2 ? primarycolor : null,
             ),
             label: '',
           ),
