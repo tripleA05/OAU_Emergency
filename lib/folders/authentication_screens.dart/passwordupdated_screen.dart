@@ -12,19 +12,19 @@ class PasswordUpdatedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_rounded,
-            color: appbarIconColor,
-            size: 30.0,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       Navigator.pop(context);
+      //     },
+      //     icon: const Icon(
+      //       Icons.arrow_back_rounded,
+      //       color: Color.fromARGB(255, 26, 7, 153),
+      //       size: 30.0,
+      //     ),
+      //   ),
+      // ),
       backgroundColor: whitecolor,
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 150, 24, 24),

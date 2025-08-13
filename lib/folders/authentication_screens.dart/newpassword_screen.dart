@@ -19,7 +19,7 @@ class NewpasswordScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: appbarIconColor,
+            color: Color.fromARGB(255, 26, 7, 153),
             size: 30.0,
           ),
         ),
@@ -46,7 +46,7 @@ class NewpasswordScreen extends StatelessWidget {
             const Gap(12),
             const Text(
               'Your password needs to be at least 8 characters long\n'
-              'Includes some words and phrases to make it even safer',
+              'Includes some words and characters to make it even safer',
               style: greyTextStyle,
             ),
             const Gap(12),

@@ -22,7 +22,7 @@ class VerifyForgotPasswordScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: appbarIconColor,
+            color: Color.fromARGB(255, 26, 7, 153),
             size: 30.0,
           ),
         ),
@@ -36,7 +36,7 @@ class VerifyForgotPasswordScreen extends StatelessWidget {
               'Forgot Password',
               style: headingTextStyle,
             ),
-            const Gap(8),
+            const Gap(18),
             const Text(
               'Enter verification code sent to',
               style: greyTextStyle,
@@ -85,7 +85,7 @@ class VerifyForgotPasswordScreen extends StatelessWidget {
               'Send a new code',
               style: headingTextStyle16,
             ),
-            const Gap(85),
+            const Gap(25),
             ReuseTextButton(
               text: 'Confirm',
               // onPressed: () {},

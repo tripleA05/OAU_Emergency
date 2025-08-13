@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/home_screen.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
-import 'package:oau_emergency_1/folders/home_route_screens.dart/report_emergency.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/report_emergency.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
@@ -18,14 +19,18 @@ class ReportScreen2 extends StatelessWidget {
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ReportScreen(),
-              ),
-            );
+            Navigator.pop(context);
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) => const HomeScreen(),
+            //   ),
+            // );
           },
-          icon: const Icon(Icons.arrow_back_rounded),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Color.fromARGB(255, 26, 7, 153),
+          ),
         ),
         backgroundColor: whitecolor,
         leadingWidth: 60,

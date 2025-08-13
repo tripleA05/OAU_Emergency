@@ -21,7 +21,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: appbarIconColor,
+            color: Color.fromARGB(255, 26, 7, 153),
             size: 30.0,
           ),
         ),

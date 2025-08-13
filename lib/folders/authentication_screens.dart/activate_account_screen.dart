@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
-// import 'package:oau_emergency_1/navbar.dart';
-// import 'package:oau_emergency_1/home_screen.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
-import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
-// import 'package:oau_emergency_1/screens/home_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ActivateAccountScreen extends StatelessWidget {
@@ -27,7 +22,7 @@ class ActivateAccountScreen extends StatelessWidget {
           },
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: appbarIconColor,
+            color: Color.fromARGB(255, 26, 7, 153),
             size: 30.0,
           ),
         ),
@@ -41,7 +36,7 @@ class ActivateAccountScreen extends StatelessWidget {
               'Activate Account',
               style: headingTextStyle,
             ),
-            const Gap(8),
+            const Gap(28),
             const Text(
               'Enter verification code sent to',
               style: greyTextStyle,
@@ -90,14 +85,14 @@ class ActivateAccountScreen extends StatelessWidget {
                 style: headingTextStyle16,
               ),
             ),
-            const Gap(85),
+            const Gap(50),
             ReuseTextButton(
               text: 'Confirm',
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SigninScreen(),
+                    builder: (context) => const Navbar(),
                   ),
                 );
               },

@@ -7,7 +7,7 @@ import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textfield.dart'
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:gap/gap.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/activate_account_screen.dart';
-// import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
+import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   static const routeName = '/SigninScreen';
@@ -28,7 +28,7 @@ class SignupScreen extends StatelessWidget {
             ),
             const Gap(8),
             const Text(
-              "Let’s get started creating a student account",
+              "Let’s get started creating an account",
               style: greyTextStyle,
             ),
             const Gap(24),
@@ -86,7 +86,7 @@ class SignupScreen extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SignupScreen(),
+                      builder: (context) => const SigninScreen(),
                     ),
                   ),
                   child: const Text(

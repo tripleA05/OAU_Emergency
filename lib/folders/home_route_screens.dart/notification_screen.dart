@@ -18,25 +18,29 @@ class NotificationScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_rounded),
+          icon: const Icon(
+            Icons.arrow_back_rounded,
+            color: Color.fromARGB(255, 26, 7, 153),
+          ),
         ),
         title: Text(
           'Notifications',
           style: GoogleFonts.inter(
             textStyle: const TextStyle(
               fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 26, 7, 153),
               fontSize: 20,
             ),
           ),
         ),
         centerTitle: true,
-        foregroundColor: secondarycolor,
+        foregroundColor: const Color.fromARGB(255, 26, 7, 153),
         leadingWidth: 60,
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 24),
             child: CircleAvatar(
-              backgroundColor: secondarycolor,
+              backgroundColor: Color.fromARGB(255, 26, 7, 153),
               radius: 16,
               child: Icon(
                 Icons.notifications,
@@ -57,7 +61,7 @@ class NotificationScreen extends StatelessWidget {
                 textStyle: const TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 15,
-                  color: secondarycolor,
+                  color: Color.fromARGB(255, 26, 7, 153),
                 ),
               ),
             ),
@@ -114,7 +118,7 @@ class NotificationScreen extends StatelessWidget {
                   textStyle: const TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
-                    color: secondarycolor,
+                    color: Color.fromARGB(255, 26, 7, 153),
                   ),
                 ),
               ),

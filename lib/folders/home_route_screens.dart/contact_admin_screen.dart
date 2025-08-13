@@ -10,7 +10,7 @@ import 'package:gap/gap.dart';
 // import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
-import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 
 class ContactAdminScreen extends StatelessWidget {
   const ContactAdminScreen({super.key});
@@ -31,17 +31,17 @@ class ContactAdminScreen extends StatelessWidget {
           ),
         ),
         automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Navbar(),
-              ),
-            );
-          },
-          icon: const Icon(Icons.arrow_back_rounded),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (context) => const Navbar(),
+        //       ),
+        //     );
+        //   },
+        //   icon: const Icon(Icons.arrow_back_rounded),
+        // ),
         backgroundColor: primarycolor,
         foregroundColor: whitecolor,
       ),

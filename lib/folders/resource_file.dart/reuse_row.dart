@@ -95,7 +95,7 @@ class ReuseRowProfileScreen extends StatefulWidget {
 class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
   var changedbox = const Icon(
     Icons.check_box_outline_blank,
-    color: Color(0xff0CB470),
+    color: Color.fromARGB(255, 33, 5, 137),
   );
 
   bool isChanged = true;
@@ -169,12 +169,12 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                         if (isChanged) {
                           changedbox = const Icon(
                             Icons.check_box_outline_blank,
-                            color: Color(0xff0CB470),
+                            color: Color.fromARGB(255, 23, 6, 138),
                           );
                         } else {
                           changedbox = const Icon(
                             Icons.check_box,
-                            color: Color(0xff0CB470),
+                            color: Color.fromARGB(255, 32, 7, 142),
                           );
                         }
                       },

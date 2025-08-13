@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
+import 'package:oau_emergency_1/folders/admin_screens.dart/admin2.dart';
+// import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/report_screen2.dart';
+// import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/chat_screen.dart';
 
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/notification_screen.dart';
-import 'package:oau_emergency_1/folders/home_route_screens.dart/profile_screen.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/profile_screen.dart';
 
-import 'package:oau_emergency_1/folders/home_route_screens.dart/report_emergency.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/report_emergency.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/safety_tips_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,18 +30,10 @@ class HomeScreen extends StatelessWidget {
         leadingWidth: 80,
         leading: Padding(
           padding: const EdgeInsets.only(right: 0, left: 24),
-          child: InkWell(
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ProfileScreen(),
-              ),
-            ),
-            child: Image.asset(
-              'assets/Group 34 (1).png',
-              height: 50,
-              width: 50,
-            ),
+          child: Image.asset(
+            'assets/Group 34 (1).png',
+            height: 50,
+            width: 50,
           ),
         ),
         centerTitle: false,
@@ -55,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const Gap(5),
             Text(
-              'Damilola Thompson',
+              'Abioye Abiodun',
               style: GoogleFonts.inter(
                 textStyle: const TextStyle(
                   color: primarycolor,
@@ -115,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                   height: 154,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: primarycolor.withOpacity(0.8),
+                    color: primarycolor.withOpacity(0.7),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
@@ -133,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                           style: italicStyle,
                         ),
                         Text(
-                          'accident/incident',
+                          'Accident/Fire incident',
                           style: GoogleFonts.inter(
                             textStyle: const TextStyle(
                               color: Color(0xffffffff),
@@ -162,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const ReportScreen(),
+                                    builder: (context) => const ReportScreen2(),
                                   ),
                                 );
                               },
@@ -171,7 +167,7 @@ class HomeScreen extends StatelessWidget {
                                 style: GoogleFonts.inter(
                                   textStyle: const TextStyle(
                                     color: primarycolor,
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -187,47 +183,54 @@ class HomeScreen extends StatelessWidget {
             ),
             const Gap(30),
             Text(
-              'Incident that Occurred',
+              'Which Emergency Occurred?',
               style: interStyle16,
             ),
             const Gap(13),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ReuseStackHomeScreen(
-                    image: Image.asset(
-                      'assets/Security Incident.png',
-                      width: 110,
-                      height: 120,
-                    ),
-                    text: 'Security\n Incident',
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ReportScreen2(),
                   ),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  // ReuseStackHomeScreen(
+                  //   image: Image.asset(
+                  //     'assets/Security Incident.png',
+                  //     width: 110,
+                  //     height: 120,
+                  //   ),
+                  //   text: 'Security\n Incident',
+                  // ),
                   ReuseStackHomeScreen(
                     image: Image.asset(
                       'assets/Fire Incident.png',
-                      width: 110,
-                      height: 120,
+                      width: 175,
+                      height: 170,
                     ),
                     text: 'Fire\nIncident',
                   ),
                   ReuseStackHomeScreen(
                     image: Image.asset(
                       'assets/Medical Incident.png',
-                      width: 110,
-                      height: 120,
+                      width: 175,
+                      height: 170,
                     ),
-                    text: 'Medical\nIncident',
+                    text: 'Road\nAccident',
                   ),
-                  ReuseStackHomeScreen(
-                    image: Image.asset(
-                      'assets/Security Incident.png',
-                      width: 110,
-                      height: 120,
-                    ),
-                    text: 'Security\nIncident',
-                  ),
+                  // ReuseStackHomeScreen(
+                  //   image: Image.asset(
+                  //     'assets/Security Incident.png',
+                  //     width: 110,
+                  //     height: 120,
+                  //   ),
+                  //   text: 'Security\nIncident',
+                  // ),
                 ],
               ),
             ),
@@ -239,7 +242,7 @@ class HomeScreen extends StatelessWidget {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AdminReport(),
+                      builder: (context) => const AdminDashboard(),
                     ),
                   ),
                   child: Text(
@@ -256,7 +259,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'View all',
-                    style: greyinterStyle12,
+                    style: interStyle16,
                   ),
                 ),
               ],
@@ -283,21 +286,18 @@ class ReuseStackHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 7.0),
-      child: Stack(
-        children: [
-          image,
-          Positioned(
-            bottom: 5,
-            left: 5,
-            child: Text(
-              text,
-              style: interStyle12,
-            ),
+    return Stack(
+      children: [
+        image,
+        Positioned(
+          bottom: 5,
+          left: 15,
+          child: Text(
+            text,
+            style: interStylewhite16,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

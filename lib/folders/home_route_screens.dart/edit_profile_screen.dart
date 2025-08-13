@@ -77,12 +77,12 @@ class EditProfile extends StatelessWidget {
                 ],
               ),
             ),
-            const Gap(93),
+            const Gap(50),
             Text(
               'Set a New Display Name',
               style: GoogleFonts.inter(
                 textStyle: const TextStyle(
-                  color: blackcolor,
+                  color: Color.fromARGB(255, 26, 7, 153),
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -94,7 +94,7 @@ class EditProfile extends StatelessWidget {
               hintText: "Display Name",
               obscureText: false,
             ),
-            const Gap(93),
+            const Gap(15),
             ReuseTextButton(
               text: 'Update Profile',
               onPressed: () {
