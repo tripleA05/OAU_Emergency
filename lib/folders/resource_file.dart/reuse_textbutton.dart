@@ -6,10 +6,12 @@ class ReuseTextButton extends StatelessWidget {
     required this.text,
     super.key,
     required this.onPressed,
+    this.child,
   });
 
   final String? text;
   final Function()? onPressed;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -22,7 +24,7 @@ class ReuseTextButton extends StatelessWidget {
         foregroundColor: whitecolor,
         minimumSize: const Size(double.infinity, 56.0),
       ),
-      child: Text(
+      child: child ?? Text(
         '$text',
         style: whiteTextStyle,
       ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
 // import 'package:flutter/widgets.dart';
@@ -45,29 +46,35 @@ class ContactAdminScreen extends StatelessWidget {
         backgroundColor: primarycolor,
         foregroundColor: whitecolor,
       ),
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(24, 23, 24, 24),
-        child: Column(
-          children: [
-            ReuseContactCard(
-              text1: 'Fire Emergency',
-              text2: '+234 011 022 0333',
-              text3: 'fireemergency@agency.oauife.edu.ng',
-              text4: 'Beside Banking Area, Road 1, Oau Campus.',
+      body: SizedBox(
+        height: Get.height,
+        width: Get.width,
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(24, 23, 24, 24),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ReuseContactCard(
+                  text1: 'Fire Emergency',
+                  text2: '+234 011 022 0333',
+                  text3: 'fireemergency@agency.oauife.edu.ng',
+                  text4: 'Beside Banking Area, Road 1, Oau Campus.',
+                ),
+                ReuseContactCard(
+                  text1: 'Security  Emergency',
+                  text2: '+234 011 022 0333',
+                  text3: 'securityemergency@agency.oauife.edu.ng',
+                  text4: 'DSA, Oau Campus.',
+                ),
+                ReuseContactCard(
+                  text1: 'Medical  Emergency ',
+                  text2: '+234 011 022 0333',
+                  text3: 'medicalemergency@agency.oauife.edu.ng',
+                  text4: 'Beside Awo Hall, OAU Campus.',
+                ),
+              ],
             ),
-            ReuseContactCard(
-              text1: 'Security  Emergency',
-              text2: '+234 011 022 0333',
-              text3: 'securityemergency@agency.oauife.edu.ng',
-              text4: 'DSA, Oau Campus.',
-            ),
-            ReuseContactCard(
-              text1: 'Medical  Emergency ',
-              text2: '+234 011 022 0333',
-              text3: 'medicalemergency@agency.oauife.edu.ng',
-              text4: 'Beside Awo Hall, OAU Campus.',
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -92,7 +99,7 @@ class ReuseContactCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 15.0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: 190,
+        // height: 2,
         child: Card(
           // elevation: 2,
           color: whitecolor,
@@ -160,14 +167,17 @@ class ReuseContactCard extends StatelessWidget {
                           color: primarycolor,
                         ),
                         const Gap(15),
-                        Text(
-                          // 'fireemergency@agency.oauife.edu.ng',
-                          text3,
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              color: Color(0xff5C5C76),
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
+                        SizedBox(
+                          width: Get.width * 0.6,
+                          child: Text(
+                            // 'fireemergency@agency.oauife.edu.ng',
+                            text3,
+                            style: GoogleFonts.inter(
+                              textStyle: const TextStyle(
+                                color: Color(0xff5C5C76),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -194,14 +204,17 @@ class ReuseContactCard extends StatelessWidget {
                           color: primarycolor,
                         ),
                         const Gap(15),
-                        Text(
-                          // 'Beside Banking Area, Road 1, Oau Campus.',
-                          text4,
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              color: Color(0xff5C5C76),
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600,
+                        SizedBox(
+                          width: Get.width * 0.6,
+                          child: Text(
+                            // 'Beside Banking Area, Road 1, Oau Campus.',
+                            text4,
+                            style: GoogleFonts.inter(
+                              textStyle: const TextStyle(
+                                color: Color(0xff5C5C76),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 
@@ -81,12 +82,14 @@ class ReuseRowProfileScreen extends StatefulWidget {
     required this.text2,
     required this.text3,
     // required this.iconButton,
+    required this.isAcknowledged,
   });
 
   final Image image;
   final String text1;
   final String text2;
   final String text3;
+  final bool isAcknowledged;
 
   @override
   State<ReuseRowProfileScreen> createState() => _ReuseRowProfileScreenState();
@@ -124,7 +127,12 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    widget.image,
+                    SizedBox(
+                      height: 63,
+                      width: 63,
+                      child: widget.image,
+                    ),
+
                     const Gap(15),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,19 +156,24 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                                 color: blackcolor),
                           ),
                         ),
-                        Text(
-                          widget.text3,
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 10,
-                              color: blackcolor,
+                        SizedBox(
+                          width: Get.width * 0.5,
+                          child: Text(
+                            widget.text3,
+                            style: GoogleFonts.inter(
+                              textStyle: const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 10,
+                                color: blackcolor,
+                              ),
                             ),
+                            overflow: TextOverflow.clip,
                           ),
                         ),
                       ],
                     ),
-                    const Gap(50),
+                    // const Gap(50),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         setState(() {
@@ -180,6 +193,25 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                       },
                       icon: changedbox,
                     ),
+                    // Container(
+                    //   // height: 5,
+                    //   width: 15,
+                    //   decoration: BoxDecoration(
+                    //     color: widget.isAcknowledged
+                    //         ? const Color.fromARGB(255, 32, 7, 142)
+                    //         : Colors.transparent,
+                    //     borderRadius: BorderRadius.circular(2),
+                    //     border: Border.all(
+                    //       color: const Color.fromARGB(255, 32, 7, 142),
+                    //     ),
+                    //   ),
+                    //   child: widget.isAcknowledged
+                    //       ? const Icon(
+                    //           Icons.check,
+                    //           color: Colors.white,
+                    //         )
+                    //       : null,
+                    // ),
                     // iconButton,
                   ],
                 ),

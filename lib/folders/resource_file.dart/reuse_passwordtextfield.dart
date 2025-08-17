@@ -5,9 +5,13 @@ class ReusePasswordTextfield extends StatefulWidget {
   const ReusePasswordTextfield({
     super.key,
     required this.hintText,
+    this.controller,
+    this.validator,
   });
 
   final String? hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<ReusePasswordTextfield> createState() => _ReusePasswordTextfieldState();
@@ -19,8 +23,10 @@ class _ReusePasswordTextfieldState extends State<ReusePasswordTextfield> {
   Icon changedIcon = const Icon(Icons.visibility_off);
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       obscureText: isObscured,
+      controller: widget.controller,
+      validator: widget.validator,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(

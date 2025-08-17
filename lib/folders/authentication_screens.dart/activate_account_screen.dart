@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
+import 'package:oau_emergency_1/repositories/auth_repository.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ActivateAccountScreen extends StatelessWidget {
   static const routeName = '/ActivateAccountScreen';
-  ActivateAccountScreen({super.key});
+  ActivateAccountScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
   final TextEditingController controller = TextEditingController();
+  final _authController = Get.find<AuthRepository>();
+  final String email;
+  final String password;
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +51,8 @@ class ActivateAccountScreen extends StatelessWidget {
               style: greyTextStyle,
             ),
             const Gap(8),
-            const Text(
-              '*******afeez@student.oauife.edu.ng',
+            Text(
+              email,
               style: headingTextStyle16,
             ),
             const Gap(24),
@@ -60,7 +69,7 @@ class ActivateAccountScreen extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
-                  length: 5,
+                  length: 4,
                   controller: controller,
                   backgroundColor: whitecolor,
                   keyboardType: const TextInputType.numberWithOptions(),
@@ -89,12 +98,17 @@ class ActivateAccountScreen extends StatelessWidget {
             ReuseTextButton(
               text: 'Confirm',
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Navbar(),
-                  ),
+                _authController.verifyAccount(
+                  email: email,
+                  code: controller.text.trim(),
+                  password: password,
                 );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const Navbar(),
+                //   ),
+                // );
               },
             )
           ],

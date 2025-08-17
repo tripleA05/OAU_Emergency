@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oau_emergency_1/folders/admin_screens.dart/admin2.dart';
 // import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
@@ -16,262 +17,267 @@ import 'package:oau_emergency_1/folders/home_route_screens.dart/notification_scr
 
 // import 'package:oau_emergency_1/folders/home_route_screens.dart/report_emergency.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/safety_tips_screen.dart';
+import 'package:oau_emergency_1/repositories/auth_repository.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/HomeScreen';
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final _authController = Get.find<AuthRepository>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 70,
-        automaticallyImplyLeading: false,
-        leadingWidth: 80,
-        leading: Padding(
-          padding: const EdgeInsets.only(right: 0, left: 24),
-          child: Image.asset(
-            'assets/Group 34 (1).png',
-            height: 50,
-            width: 50,
+    return Obx(() {
+      return Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 70,
+          automaticallyImplyLeading: false,
+          leadingWidth: 80,
+          leading: Padding(
+            padding: const EdgeInsets.only(right: 0, left: 24),
+            child: Image.asset(
+              'assets/Group 34 (1).png',
+              height: 50,
+              width: 50,
+            ),
           ),
-        ),
-        centerTitle: false,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome Back',
-              style: GoogleFonts.inter(
-                textStyle: const TextStyle(
-                  color: Color(0xff5C5C76),
-                  fontSize: 13,
+          centerTitle: false,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Welcome Back',
+                style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                    color: Color(0xff5C5C76),
+                    fontSize: 13,
+                  ),
                 ),
               ),
-            ),
-            const Gap(5),
-            Text(
-              'Abioye Abiodun',
-              style: GoogleFonts.inter(
-                textStyle: const TextStyle(
-                  color: primarycolor,
-                  fontSize: 15,
+              const Gap(5),
+              Text(
+                '${_authController.user.value?.firstname ?? 'User'} ${_authController.user.value?.lastname ?? ''}',
+                style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                    color: primarycolor,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 24),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    width: 1.2,
+                    color: blackcolor,
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundColor: whitecolor,
+                  foregroundColor: blackcolor,
+                  radius: 18,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NotificationScreen()),
+                      );
+                    },
+                    icon: Badge.count(
+                      count: 1,
+                      child: const Icon(Icons.notifications_none_outlined),
+                    ),
+                    iconSize: 20,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 24),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  width: 1.2,
-                  color: blackcolor,
-                ),
-              ),
-              child: CircleAvatar(
-                backgroundColor: whitecolor,
-                foregroundColor: blackcolor,
-                radius: 18,
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NotificationScreen()),
-                    );
-                  },
-                  icon: Badge.count(
-                    count: 1,
-                    child: const Icon(Icons.notifications_none_outlined),
+        backgroundColor: whitecolor,
+        body: Padding(
+          padding: const EdgeInsets.only(top: 10, left: 24, right: 24),
+          child: ListView(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    'assets/Ambulance Image (1).png',
+                    width: double.infinity,
+                    height: 154,
                   ),
-                  iconSize: 20,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-      backgroundColor: whitecolor,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 10, left: 24, right: 24),
-        child: ListView(
-          children: [
-            Stack(
-              children: [
-                Image.asset(
-                  'assets/Ambulance Image (1).png',
-                  width: double.infinity,
-                  height: 154,
-                ),
-                Container(
-                  height: 154,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: primarycolor.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 30,
-                      top: 15,
-                      bottom: 15,
+                  Container(
+                    height: 154,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: primarycolor.withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'is there an',
-                          style: italicStyle,
-                        ),
-                        Text(
-                          'Accident/Fire incident',
-                          style: GoogleFonts.inter(
-                            textStyle: const TextStyle(
-                              color: Color(0xffffffff),
-                              fontWeight: FontWeight.w900,
-                              fontSize: 19,
-                              fontStyle: FontStyle.italic,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 30,
+                        top: 15,
+                        bottom: 15,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            'is there an',
+                            style: italicStyle,
+                          ),
+                          Text(
+                            'Accident/Fire incident',
+                            style: GoogleFonts.inter(
+                              textStyle: const TextStyle(
+                                color: Color(0xffffffff),
+                                fontWeight: FontWeight.w900,
+                                fontSize: 19,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
-                        ),
-                        Text(
-                          'happening?',
-                          style: italicStyle,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: whitecolor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            height: 35,
-                            width: 96,
-                            // color: whitecolor,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ReportScreen2(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                'Report it',
-                                style: GoogleFonts.inter(
-                                  textStyle: const TextStyle(
-                                    color: primarycolor,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
+                          Text(
+                            'happening?',
+                            style: italicStyle,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: whitecolor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              height: 35,
+                              width: 96,
+                              // color: whitecolor,
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ReportScreen2(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  'Report it',
+                                  style: GoogleFonts.inter(
+                                    textStyle: const TextStyle(
+                                      color: primarycolor,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const Gap(30),
-            Text(
-              'Which Emergency Occurred?',
-              style: interStyle16,
-            ),
-            const Gap(13),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ReportScreen2(),
-                  ),
-                );
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  // ReuseStackHomeScreen(
-                  //   image: Image.asset(
-                  //     'assets/Security Incident.png',
-                  //     width: 110,
-                  //     height: 120,
-                  //   ),
-                  //   text: 'Security\n Incident',
-                  // ),
-                  ReuseStackHomeScreen(
-                    image: Image.asset(
-                      'assets/Fire Incident.png',
-                      width: 175,
-                      height: 170,
-                    ),
-                    text: 'Fire\nIncident',
-                  ),
-                  ReuseStackHomeScreen(
-                    image: Image.asset(
-                      'assets/Medical Incident.png',
-                      width: 175,
-                      height: 170,
-                    ),
-                    text: 'Road\nAccident',
-                  ),
-                  // ReuseStackHomeScreen(
-                  //   image: Image.asset(
-                  //     'assets/Security Incident.png',
-                  //     width: 110,
-                  //     height: 120,
-                  //   ),
-                  //   text: 'Security\nIncident',
-                  // ),
                 ],
               ),
-            ),
-            const Gap(22),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () => Navigator.push(
+              const Gap(30),
+              Text(
+                'Which Emergency Occurred?',
+                style: interStyle16,
+              ),
+              const Gap(13),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AdminDashboard(),
+                      builder: (context) => const ReportScreen2(),
+                    ),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    // ReuseStackHomeScreen(
+                    //   image: Image.asset(
+                    //     'assets/Security Incident.png',
+                    //     width: 110,
+                    //     height: 120,
+                    //   ),
+                    //   text: 'Security\n Incident',
+                    // ),
+                    ReuseStackHomeScreen(
+                      image: Image.asset(
+                        'assets/Fire Incident.png',
+                        width: 175,
+                        height: 170,
+                      ),
+                      text: 'Fire\nIncident',
+                    ),
+                    ReuseStackHomeScreen(
+                      image: Image.asset(
+                        'assets/Medical Incident.png',
+                        width: 175,
+                        height: 170,
+                      ),
+                      text: 'Road\nAccident',
+                    ),
+                    // ReuseStackHomeScreen(
+                    //   image: Image.asset(
+                    //     'assets/Security Incident.png',
+                    //     width: 110,
+                    //     height: 120,
+                    //   ),
+                    //   text: 'Security\nIncident',
+                    // ),
+                  ],
+                ),
+              ),
+              const Gap(22),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AdminDashboard(),
+                      ),
+                    ),
+                    child: Text(
+                      'Safety Tips',
+                      style: interStyle16,
                     ),
                   ),
-                  child: Text(
-                    'Safety Tips',
-                    style: interStyle16,
-                  ),
-                ),
-                InkWell(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SafetyTips(),
+                  InkWell(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SafetyTips(),
+                      ),
+                    ),
+                    child: Text(
+                      'View all',
+                      style: interStyle16,
                     ),
                   ),
-                  child: Text(
-                    'View all',
-                    style: interStyle16,
-                  ),
-                ),
-              ],
-            ),
-            const Gap(13),
-            const reuseHomecontainer(),
-            const reuseHomecontainer(),
-            const reuseHomecontainer(),
-          ],
+                ],
+              ),
+              const Gap(13),
+              const reuseHomecontainer(),
+              const reuseHomecontainer(),
+              const reuseHomecontainer(),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:oau_emergency_1/appbinding.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/splash_screen.dart';
 
 void main() {
@@ -10,7 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
+      initialBinding: AppBinding(),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
       // routes: {

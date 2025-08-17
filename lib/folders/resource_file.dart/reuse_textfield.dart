@@ -7,15 +7,21 @@ class ReuseTextfield extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     // required this.obscureText,
+    this.controller,
+    this.validator,
   });
 
   final String? hintText;
   final Widget? prefixIcon;
   // final bool obscureText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      controller: controller,
+      validator: validator,
       // obscureText: obscureText,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(

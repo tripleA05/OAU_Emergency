@@ -1,19 +1,41 @@
 // import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:gap/gap.dart';
 // import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_row.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/edit_profile_screen.dart';
+import 'package:oau_emergency_1/repositories/auth_repository.dart';
+import 'package:oau_emergency_1/repositories/user_repository.dart';
 // import 'package:oau_emergency_1/reuse_row.dart';
 // import 'package:oau_emergency_1/reuse_row.dart';
 // import 'package:oau_emergency_1/navbar.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final _authController = Get.find<AuthRepository>();
+
+  final _userController = Get.find<UserRepository>();
+
+  @override
+  void initState() {
+    if (_userController.reportList.value == null) {
+      _userController.fetchReports();
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,159 +67,198 @@ class ProfileScreen extends StatelessWidget {
         foregroundColor: primarycolor,
         leadingWidth: 60,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: ListView(children: [
-          Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Obx(() {
+        return Padding(
+          padding: const EdgeInsets.all(24),
+          child: ListView(
             children: [
-              Image.asset(
-                'assets/Group 34 (1).png',
-                height: 50,
-                width: 50,
-              ),
-              const Gap(14),
-              Column(
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Damilola Thompson',
-                    style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                        color: Color(0xff010080),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                  Image.asset(
+                    'assets/Group 34 (1).png',
+                    height: 50,
+                    width: 50,
                   ),
-                  const Gap(7),
-                  Text(
-                    'ttdamilola@student.edu.oauife.ng',
-                    style: GoogleFonts.inter(
-                      textStyle: const TextStyle(
-                        color: Color(0xff5C5C76),
-                        fontSize: 12,
-                        // fontWeight: fon
+                  const Gap(14),
+                  Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${_authController.user.value?.firstname ?? 'User'} ${_authController.user.value?.lastname ?? ''}',
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Color(0xff010080),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
-                    ),
+                      const Gap(7),
+                      Text(
+                        _authController.user.value?.email ?? '',
+                        style: GoogleFonts.inter(
+                          textStyle: const TextStyle(
+                            color: Color(0xff5C5C76),
+                            fontSize: 12,
+                            // fontWeight: fon
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  const Gap(50),
+                  // const InkWell(
+                  //   child: Icon(
+                  //     Icons.edit,
+                  //     color: primarycolor,
+                  //     size: 30,
+                  //   ),
+                  // )
+                  // IconButton(
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => const EditProfile(),
+                  //       ),
+                  //     );
+                  //   },
+                  //   icon: const Icon(
+                  //     Icons.edit,
+                  //     color: primarycolor,
+                  //     size: 30,
+                  //   ),
+                  // ),
                 ],
               ),
-              const Gap(50),
-              // const InkWell(
-              //   child: Icon(
-              //     Icons.edit,
-              //     color: primarycolor,
-              //     size: 30,
-              //   ),
-              // )
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfile(),
+              const Gap(5),
+              SizedBox(
+                child: InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const ,
+                    //   ),
+                    // );
+                    Get.offAll(() => const SigninScreen());
+                  },
+                  child: const Text(
+                    'Sign out',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w800,
                     ),
-                  );
-                },
-                icon: const Icon(
-                  Icons.edit,
-                  color: primarycolor,
-                  size: 30,
+                  ),
                 ),
               ),
+              const Gap(25),
+              Text(
+                'My Post',
+                style: GoogleFonts.inter(
+                  textStyle: const TextStyle(
+                    color: Color(0xff010080),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              const Gap(5),
+              _userController.reportList.value == null
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : _userController.reportList.value!.isEmpty
+                      ? const Center(
+                          child: Text(
+                            'No reports found',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+              ..._userController.reportList.value!.map(
+                (report) => ReuseRowProfileScreen(
+                  image: report.image == null
+                      ? Image.asset(
+                          'assets/Frame 8250.png',
+                          fit: BoxFit.cover,
+                        )
+                      : Image.network(
+                          report.image ?? '',
+                          fit: BoxFit.cover,
+                        ),
+                  text1: report.location ?? '',
+                  text2: DateFormat('EEE d MMM, yyyy | h:mm a').format(
+                    DateTime.tryParse(report.date ?? '') ?? DateTime.now(),
+                  ),
+                  text3: report.details ?? '',
+                  isAcknowledged: report.isAcknowledged ?? false,
+                ),
+              ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
+              // ReuseRowProfileScreen(
+              //   image: Image.asset(
+              //     'assets/Frame 8250.png',
+              //     height: 63,
+              //   ),
+              //   text1: 'Security Emergency\nAngola hostel',
+              //   text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
+              //   text3: 'A Robbery case',
+              // ),
             ],
           ),
-          const Gap(5),
-          SizedBox(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SigninScreen(),
-                  ),
-                );
-              },
-              child: const Text(
-                'Sign out',
-                style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ),
-          ),
-          const Gap(25),
-          Text(
-            'My Post',
-            style: GoogleFonts.inter(
-              textStyle: const TextStyle(
-                color: Color(0xff010080),
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          const Gap(5),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-          ReuseRowProfileScreen(
-            image: Image.asset(
-              'assets/Frame 8250.png',
-              height: 63,
-            ),
-            text1: 'Security Emergency\nAngola hostel',
-            text2: 'Thurs 15TH Aug, 2024 | 8:00pm',
-            text3: 'A Robbery case',
-          ),
-        ]),
-      ),
+        );
+      }),
     );
   }
 }

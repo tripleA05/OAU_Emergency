@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 
 class ReuseTextfield2 extends StatelessWidget {
@@ -7,17 +8,23 @@ class ReuseTextfield2 extends StatelessWidget {
     required this.hintText,
     @required this.prefixIcon,
     required this.obscureText,
+    this.controller,
+    this.inputFormatters,
   });
 
   final String? hintText;
   final Widget? prefixIcon;
   final bool obscureText;
+  final TextEditingController? controller;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       obscureText: obscureText,
       keyboardType: TextInputType.name,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         // child: SizedBox(
         //   width: 3,
