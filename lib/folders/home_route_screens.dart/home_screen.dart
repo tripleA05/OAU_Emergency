@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oau_emergency_1/folders/admin_screens.dart/admin2.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/profile_screen.dart';
 // import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/report_screen2.dart';
 // import 'package:oau_emergency_1/folders/admin_screens.dart/admin_report_screen.dart';
@@ -34,10 +35,19 @@ class HomeScreen extends StatelessWidget {
           leadingWidth: 80,
           leading: Padding(
             padding: const EdgeInsets.only(right: 0, left: 24),
-            child: Image.asset(
-              'assets/Group 34 (1).png',
-              height: 50,
-              width: 50,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()),
+                );
+              },
+              child: Image.asset(
+                'assets/Group 34 (1).png',
+                height: 50,
+                width: 50,
+              ),
             ),
           ),
           centerTitle: false,
@@ -243,17 +253,9 @@ class HomeScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AdminDashboard(),
-                      ),
-                    ),
-                    child: Text(
-                      'Safety Tips',
-                      style: interStyle16,
-                    ),
+                  Text(
+                    'Safety Tips',
+                    style: interStyle16,
                   ),
                   InkWell(
                     onTap: () => Navigator.push(

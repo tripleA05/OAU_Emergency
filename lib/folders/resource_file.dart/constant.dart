@@ -40,8 +40,9 @@ const whiteTextStyle = TextStyle(
 );
 
 const greyTextStyle = TextStyle(
-  fontSize: 12.0,
+  fontSize: 14.0,
   color: greycolor,
+  fontWeight: FontWeight.w600,
   fontFamily: 'PlusJakartaSans',
 );
 

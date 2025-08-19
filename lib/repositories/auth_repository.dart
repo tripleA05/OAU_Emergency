@@ -195,7 +195,7 @@ class AuthRepository extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         final json = jsonDecode(response.body);
         log(json['message']);
-        Get.to(() => NewpasswordScreen());
+        Get.to(() => const NewpasswordScreen());
       }
     } catch (e) {
       log('forgot password error is $e');

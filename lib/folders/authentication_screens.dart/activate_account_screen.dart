@@ -4,7 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart';
-import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 import 'package:oau_emergency_1/repositories/auth_repository.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 

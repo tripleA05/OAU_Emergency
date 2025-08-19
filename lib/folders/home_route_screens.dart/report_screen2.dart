@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -156,9 +158,9 @@ class _ReportScreen2State extends State<ReportScreen2> {
               ],
             ),
             const Gap(45),
-             ReuseTextfield2(
+            ReuseTextfield2(
               hintText: 'Along Anglomoz',
-              prefixIcon: Icon(
+              prefixIcon: const Icon(
                 Icons.location_on_sharp,
                 size: 30,
               ),
@@ -237,7 +239,7 @@ class _ReportScreen2State extends State<ReportScreen2> {
                 }
                 if (selectedPicture == null) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text('Please take a picture of the situation'),
                     ),
                   );

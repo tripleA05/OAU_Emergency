@@ -85,7 +85,8 @@ class ReuseRowProfileScreen extends StatefulWidget {
     required this.isAcknowledged,
   });
 
-  final Image image;
+  final Widget image;
+
   final String text1;
   final String text2;
   final String text3;

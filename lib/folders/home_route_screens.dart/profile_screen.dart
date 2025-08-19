@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/full_image.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:gap/gap.dart';
 // import 'package:oau_emergency_1/folders/home_route_screens.dart/navbar.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_row.dart';
-import 'package:oau_emergency_1/folders/home_route_screens.dart/edit_profile_screen.dart';
+// import 'package:oau_emergency_1/folders/home_route_screens.dart/edit_profile_screen.dart';
 import 'package:oau_emergency_1/repositories/auth_repository.dart';
 import 'package:oau_emergency_1/repositories/user_repository.dart';
 // import 'package:oau_emergency_1/reuse_row.dart';
@@ -42,17 +44,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => const Navbar(),
-        //       ),
-        //     );
-        //   },
-        //   icon: const Icon(Icons.arrow_back_rounded),
-        // ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Navbar(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_rounded),
+        ),
         backgroundColor: whitecolor,
         title: Text(
           'Profile',
@@ -157,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const Gap(25),
               Text(
-                'My Post',
+                'My Reports',
                 style: GoogleFonts.inter(
                   textStyle: const TextStyle(
                     color: Color(0xff010080),
@@ -183,25 +185,109 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         )
                       : const SizedBox.shrink(),
               if (_userController.reportList.value != null)
-                ..._userController.reportList.value!.map(
+                ..._userController.reportList.value!.reversed.map(
                   (report) => ReuseRowProfileScreen(
-                    image: report.image == null
-                        ? Image.asset(
-                            'assets/Frame 8250.png',
-                            fit: BoxFit.cover,
-                          )
-                        : Image.network(
-                            report.image ?? '',
-                            fit: BoxFit.cover,
+                    image: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                FullImageScreen(imageUrl: report.image),
                           ),
-                    text1: report.location ?? '',
+                        );
+                      },
+                      child: report.image == null
+                          ? Image.asset(
+                              'assets/Frame 8250.png',
+                              fit: BoxFit.cover,
+                            )
+                          : Image.network(
+                              report.image ?? '',
+                              fit: BoxFit.cover,
+                            ),
+                    ),
+                    text1: "Emergency Report",
                     text2: DateFormat('EEE d MMM, yyyy | h:mm a').format(
                       DateTime.tryParse(report.date ?? '') ?? DateTime.now(),
                     ),
-                    text3: report.details ?? '',
+                    text3: report.details ?? "No details provided",
                     isAcknowledged: report.isAcknowledged ?? false,
                   ),
                 ),
+
+              // if (_userController.reportList.value != null)
+              //   ..._userController.reportList.value!.map(
+              //     (report) => ListView(
+              //             padding: const EdgeInsets.all(10),
+              //             children: reports.reversed.map((report) {
+              //               return ReuseRowProfileScreen(
+              //                 image: GestureDetector(
+              //                   onTap: () {
+              //                     Navigator.push(
+              //                       context,
+              //                       MaterialPageRoute(
+              //                         builder: (_) => FullImageScreen(
+              //                             imageUrl: report.image),
+              //                       ),
+              //                     );
+              //                   },
+              //                   child: report.image == null
+              //                       ? Image.asset(
+              //                           'assets/Frame 8250.png',
+              //                           fit: BoxFit.cover,
+              //                         )
+              //                       : Image.network(
+              //                           report.image ?? '',
+              //                           fit: BoxFit.cover,
+              //                         ),
+              //                 ),
+              //                 text1: "Emergency Report",
+              //                 text2: report.location ?? "Unknown Location",
+              //                 text3: report.details ?? "No details provided",
+              //                 isAcknowledged: report.isAcknowledged ?? false,
+              //               );
+              //             }).toList(),
+
+              // ReuseRowProfileScreen(
+              //   image: GestureDetector(
+              //     onTap: () {
+              //       Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //           builder: (_) =>
+              //               FullImageScreen(imageUrl: report.image),
+              //         ),
+              //       );
+              //     },
+              //     child: report.image == null
+              //         ? Image.asset(
+              //             'assets/Frame 8250.png',
+              //             fit: BoxFit.cover,
+              //           )
+              //         : Image.network(
+              //             report.image ?? '',
+              //             fit: BoxFit.cover,
+              //           ),
+              //   ),
+
+              //   //  report.image == null
+              //   //     ? Image.asset(
+              //   //         'assets/Frame 8250.png',
+              //   //         fit: BoxFit.cover,
+              //   //       )
+              //   //     : Image.network(
+              //   //         report.image ?? '',
+              //   //         fit: BoxFit.cover,
+              //   //       ),
+              //   text1: report.location ?? '',
+              //   text2: DateFormat('EEE d MMM, yyyy | h:mm a').format(
+              //     DateTime.tryParse(report.date ?? '') ?? DateTime.now(),
+              //   ),
+              //   text3: report.details ?? '',
+              //   isAcknowledged: report.isAcknowledged ?? false,
+              // ),
+
               // ReuseRowProfileScreen(
               //   image: Image.asset(
               //     'assets/Frame 8250.png',

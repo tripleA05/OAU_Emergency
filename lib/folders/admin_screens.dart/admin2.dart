@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:oau_emergency_1/folders/admin_screens.dart/safetytips_admin.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
+import 'package:oau_emergency_1/folders/home_route_screens.dart/full_image.dart';
 import 'package:oau_emergency_1/folders/home_route_screens.dart/home_screen.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:oau_emergency_1/models/report.dart';
 import 'package:oau_emergency_1/repositories/admin_repository.dart';
-import 'package:oau_emergency_1/repositories/user_repository.dart';
+// import 'package:oau_emergency_1/repositories/user_repository.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({super.key});
@@ -194,7 +195,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         itemCount: reports?.length ?? 0,
         itemBuilder: (context, index) {
-          final report = reports![index];
+          // ✅ reverse the list so newest report shows first
+          final report = reports!.reversed.toList()[index];
+
           return Container(
             margin: const EdgeInsets.only(bottom: 15),
             decoration: BoxDecoration(
@@ -202,6 +205,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
+                  // ignore: deprecated_member_use
                   color: Colors.grey.withOpacity(0.1),
                   spreadRadius: 1,
                   blurRadius: 10,
@@ -222,10 +226,25 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey[300],
                         ),
-                        child: const Icon(
-                          Icons.person,
-                          color: Colors.grey,
-                          size: 30,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    FullImageScreen(imageUrl: report.image),
+                              ),
+                            );
+                          },
+                          child: report.image == null
+                              ? Image.asset(
+                                  'assets/Frame 8250.png',
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  report.image ?? '',
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                       ),
                       const SizedBox(width: 15),
@@ -234,7 +253,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Security Emergency',
+                              'Emergency Report',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -308,6 +327,160 @@ class _AdminDashboardState extends State<AdminDashboard> {
       );
     });
   }
+
+  // Widget _buildReportsTab(List<Report>? reports) {
+  //   return Builder(builder: (context) {
+  //     return ListView.builder(
+  //       padding: const EdgeInsets.symmetric(horizontal: 20),
+  //       itemCount: reports?.length ?? 0,
+  //       itemBuilder: (context, index) {
+  //         final report = reports![index];
+  //         return Container(
+  //           margin: const EdgeInsets.only(bottom: 15),
+  //           decoration: BoxDecoration(
+  //             color: const Color.fromARGB(255, 243, 242, 242),
+  //             borderRadius: BorderRadius.circular(15),
+  //             boxShadow: [
+  //               BoxShadow(
+  //                 // ignore: deprecated_member_use
+  //                 color: Colors.grey.withOpacity(0.1),
+  //                 spreadRadius: 1,
+  //                 blurRadius: 10,
+  //                 offset: const Offset(0, 2),
+  //               ),
+  //             ],
+  //           ),
+  //           child: Padding(
+  //             padding: const EdgeInsets.all(15),
+  //             child: Column(
+  //               children: [
+  //                 Row(
+  //                   children: [
+  //                     Container(
+  //                       width: 50,
+  //                       height: 50,
+  //                       decoration: BoxDecoration(
+  //                         borderRadius: BorderRadius.circular(10),
+  //                         color: Colors.grey[300],
+  //                       ),
+
+  //                       child: GestureDetector(
+  //                         onTap: () {
+  //                           Navigator.push(
+  //                             context,
+  //                             MaterialPageRoute(
+  //                               builder: (_) =>
+  //                                   FullImageScreen(imageUrl: report.image),
+  //                             ),
+  //                           );
+  //                         },
+  //                         child: report.image == null
+  //                             ? Image.asset(
+  //                                 'assets/Frame 8250.png',
+  //                                 fit: BoxFit.cover,
+  //                               )
+  //                             : Image.network(
+  //                                 report.image ?? '',
+  //                                 fit: BoxFit.cover,
+  //                               ),
+  //                       ),
+
+  //                       // child: report.image == null
+  //                       //     ? Image.asset(
+  //                       //         'assets/Frame 8250.png',
+  //                       //         fit: BoxFit.cover,
+  //                       //       )
+  //                       //     : Image.network(
+  //                       //         report.image ?? '',
+  //                       //         fit: BoxFit.cover,
+  //                       //       ),
+
+  //                       // const Icon(
+  //                       //   Icons.person,
+  //                       //   color: Colors.grey,
+  //                       //   size: 30,
+  //                       // ),
+  //                     ),
+  //                     const SizedBox(width: 15),
+  //                     Expanded(
+  //                       child: Column(
+  //                         crossAxisAlignment: CrossAxisAlignment.start,
+  //                         children: [
+  //                           const Text(
+  //                             'Emergency',
+  //                             style: TextStyle(
+  //                               fontSize: 16,
+  //                               fontWeight: FontWeight.bold,
+  //                               color: Colors.black87,
+  //                             ),
+  //                           ),
+  //                           const SizedBox(height: 2),
+  //                           Text(
+  //                             '${report.location}',
+  //                             style: const TextStyle(
+  //                               fontSize: 14,
+  //                               color: Colors.grey,
+  //                             ),
+  //                           ),
+  //                           const SizedBox(height: 4),
+  //                           Text(
+  //                             DateFormat('EEE d MMM, yyyy | h:mm a').format(
+  //                               DateTime.tryParse(report.date ?? '') ??
+  //                                   DateTime.now(),
+  //                             ),
+  //                             style: const TextStyle(
+  //                               fontSize: 12,
+  //                               color: Colors.grey,
+  //                             ),
+  //                           ),
+  //                           const SizedBox(height: 6),
+  //                           Text(
+  //                             '${report.details}',
+  //                             style: const TextStyle(
+  //                               fontSize: 13,
+  //                               color: Colors.black54,
+  //                             ),
+  //                             maxLines: 2,
+  //                             overflow: TextOverflow.ellipsis,
+  //                           ),
+  //                         ],
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //                 const SizedBox(height: 15),
+  //                 SizedBox(
+  //                   width: double.infinity,
+  //                   child: ElevatedButton(
+  //                     onPressed: () {
+  //                       _adminController.acknowledgeReport('${report.id}');
+  //                     },
+  //                     style: ElevatedButton.styleFrom(
+  //                       backgroundColor: const Color(0xFF1A237E),
+  //                       foregroundColor: Colors.white,
+  //                       padding: const EdgeInsets.symmetric(vertical: 12),
+  //                       shape: RoundedRectangleBorder(
+  //                         borderRadius: BorderRadius.circular(10),
+  //                       ),
+  //                       elevation: 0,
+  //                     ),
+  //                     child: const Text(
+  //                       'Acknowledge',
+  //                       style: TextStyle(
+  //                         fontSize: 15,
+  //                         fontWeight: FontWeight.w600,
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         );
+  //       },
+  //     );
+  //   });
+  // }
 
   Widget _buildSafetyTipsTab() {
     return SingleChildScrollView(

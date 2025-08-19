@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
               // print("Tap Event");
             },
             text: const [
-              "OAU\nEmergency",
+              "Emergency",
             ],
             textStyle: const TextStyle(
               fontSize: 40.0,

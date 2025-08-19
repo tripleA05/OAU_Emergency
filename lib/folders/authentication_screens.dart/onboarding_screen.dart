@@ -53,7 +53,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ],
           ),
           title:
-              'Stay safe with\n instant emergency\n alerts and quick\n reporting',
+              'Stay safe with instant \n emergency alerts and \nquick reporting',
           body:
               'Instantly call for help from the right\n authorities in time of emergency.',
           decoration: const PageDecoration(
@@ -66,7 +66,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             bodyTextStyle: TextStyle(
               fontFamily: 'PlusJakartaSans',
               color: Colors.black,
-              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              fontSize: 16.0,
             ),
             safeArea: 0,
             imageAlignment: Alignment.topCenter,
@@ -101,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ]),
-          title: 'Stay safe, stay\n informed on\n campus',
+          title: 'Stay safe, Stay informed \n on campus',
           body:
               'Quickly report emergencies and receive\n campus safety alerts in real time',
           decoration: const PageDecoration(
@@ -114,7 +115,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             bodyTextStyle: TextStyle(
               fontFamily: 'PlusJakartaSans',
               color: Colors.black,
-              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              fontSize: 16.0,
             ),
             safeArea: 0,
             imageAlignment: Alignment.topCenter,
@@ -150,7 +152,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
           ]),
-          title: 'Get alert and\n reporting at your\n finger tip.',
+          title: 'Get alert and reporting \n at your finger tip.',
           body: 'Report emergencies and receive\n alerts with just a tap',
           decoration: const PageDecoration(
             titleTextStyle: TextStyle(
@@ -160,10 +162,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               color: Color(0xff8080BF),
             ),
             bodyTextStyle: TextStyle(
-              fontFamily: 'PlusJakartaSans',
-              color: Colors.black,
-              fontSize: 14.0,
-            ),
+                fontFamily: 'PlusJakartaSans',
+                color: Colors.black,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600),
             safeArea: 0,
             imageAlignment: Alignment.topCenter,
             imagePadding: EdgeInsets.only(top: 190),

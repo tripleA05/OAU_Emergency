@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: AppBinding(),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: const SplashScreen(),
       // routes: {
       //   HomeScreen.routeName: (context) => const HomeScreen(),
       //   SigninScreen.routeName: (context) => const SigninScreen(),

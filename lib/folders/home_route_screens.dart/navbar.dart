@@ -19,8 +19,8 @@ class Navbar extends StatefulWidget {
 class _NavbarState extends State<Navbar> {
   final List<Widget> _screens = [
     HomeScreen(),
-    ContactAdminScreen(),
-    ProfileScreen(),
+    const ContactAdminScreen(),
+    const ProfileScreen(),
   ];
 
   int selectedPageIndex = 0;

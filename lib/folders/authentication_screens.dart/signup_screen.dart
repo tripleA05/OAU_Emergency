@@ -7,7 +7,7 @@ import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textbutton.dart
 import 'package:oau_emergency_1/folders/resource_file.dart/reuse_textfield.dart';
 import 'package:oau_emergency_1/folders/resource_file.dart/constant.dart';
 import 'package:gap/gap.dart';
-import 'package:oau_emergency_1/folders/authentication_screens.dart/activate_account_screen.dart';
+// import 'package:oau_emergency_1/folders/authentication_screens.dart/activate_account_screen.dart';
 import 'package:oau_emergency_1/folders/authentication_screens.dart/signin_screen.dart';
 import 'package:oau_emergency_1/repositories/auth_repository.dart';
 
@@ -56,7 +56,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const Gap(24),
                 ReuseTextfield(
                   hintText: 'firstname',
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.account_circle_outlined,
                     size: 25,
                   ),
@@ -66,7 +66,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const Gap(24),
                 ReuseTextfield(
                   hintText: 'lastname',
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.account_circle_outlined,
                     size: 25,
                   ),
@@ -76,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const Gap(24),
                 ReuseTextfield(
                   hintText: 'Student Email',
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.email_outlined,
                     size: 25,
                   ),

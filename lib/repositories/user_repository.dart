@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+// ignore: depend_on_referenced_packages
 import 'package:http_parser/http_parser.dart';
 import 'package:oau_emergency_1/app_urls.dart';
 import 'package:oau_emergency_1/http_util.dart';
@@ -67,8 +68,10 @@ class UserRepository extends GetxController {
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final json = jsonDecode(response.body);
-        reportList.value = List.from(json['data']).where((item) =>
-            item['userId'] == '${_authController.user.value?.id}').map((item) => Report.fromJson(item))
+        reportList.value = List.from(json['data'])
+            .where(
+                (item) => item['userId'] == '${_authController.user.value?.id}')
+            .map((item) => Report.fromJson(item))
             .toList();
 
         // json.map((item) => Report.fromJson(item)).toList();

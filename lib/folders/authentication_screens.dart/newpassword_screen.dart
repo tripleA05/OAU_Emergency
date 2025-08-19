@@ -53,7 +53,7 @@ class NewpasswordScreen extends StatelessWidget {
             const ReusePasswordTextfield(
               hintText: 'Confirm Password',
             ),
-            const Gap(270),
+            const Gap(230),
             ReuseTextButton(
               text: 'Continue',
               onPressed: () {
