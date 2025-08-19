@@ -24,7 +24,7 @@ class Report {
       location: json['location'],
       date: json['createdAt'],
       details: json['details'],
-      isAcknowledged: json['isAcknowledged'] ?? false,
+      isAcknowledged: json['isAcknowled'] ?? false,
       userId: json['userId'],
       image: json['image'],
     );

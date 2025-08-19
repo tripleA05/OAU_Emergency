@@ -182,25 +182,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         )
                       : const SizedBox.shrink(),
-              ..._userController.reportList.value!.map(
-                (report) => ReuseRowProfileScreen(
-                  image: report.image == null
-                      ? Image.asset(
-                          'assets/Frame 8250.png',
-                          fit: BoxFit.cover,
-                        )
-                      : Image.network(
-                          report.image ?? '',
-                          fit: BoxFit.cover,
-                        ),
-                  text1: report.location ?? '',
-                  text2: DateFormat('EEE d MMM, yyyy | h:mm a').format(
-                    DateTime.tryParse(report.date ?? '') ?? DateTime.now(),
+              if (_userController.reportList.value != null)
+                ..._userController.reportList.value!.map(
+                  (report) => ReuseRowProfileScreen(
+                    image: report.image == null
+                        ? Image.asset(
+                            'assets/Frame 8250.png',
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            report.image ?? '',
+                            fit: BoxFit.cover,
+                          ),
+                    text1: report.location ?? '',
+                    text2: DateFormat('EEE d MMM, yyyy | h:mm a').format(
+                      DateTime.tryParse(report.date ?? '') ?? DateTime.now(),
+                    ),
+                    text3: report.details ?? '',
+                    isAcknowledged: report.isAcknowledged ?? false,
                   ),
-                  text3: report.details ?? '',
-                  isAcknowledged: report.isAcknowledged ?? false,
                 ),
-              ),
               // ReuseRowProfileScreen(
               //   image: Image.asset(
               //     'assets/Frame 8250.png',

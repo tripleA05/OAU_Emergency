@@ -53,9 +53,11 @@ class AuthRepository extends GetxController {
             password: password,
           ),
         );
+        Get.snackbar('Success', 'Account created successfully');
       }
     } catch (e) {
       log('signup error is $e');
+      Get.snackbar('Error', 'Failed to create account. Please try again.');
     }
   }
 
@@ -85,10 +87,12 @@ class AuthRepository extends GetxController {
         log(json['message']);
         // token = json['token'];
         // log('token is $token');
+        Get.snackbar('Success', 'Account verified successfully');
         login(email: email, password: password);
       }
     } catch (e) {
       log('verify account error is $e');
+      Get.snackbar('Error', 'Failed to verify account. Please try again.');
     }
   }
 
@@ -144,10 +148,12 @@ class AuthRepository extends GetxController {
           log('token is $token');
           // await getUser();
           Get.to(() => const Navbar());
+          Get.snackbar('Success', 'Login successful');
         }
       }
     } catch (e) {
       log('login error is $e');
+      Get.snackbar('Error', 'Login failed. Please try again.');
     }
   }
 

@@ -37,11 +37,13 @@ class AdminRepository extends GetxController {
         token = json['accessToken'];
 
         log('token is $token');
+        Get.snackbar('Success', 'Login successful');
         // await getUser();
         // Get.to(() => const Navbar());
       }
     } catch (e) {
       log('login error is $e');
+      Get.snackbar('Error', 'Login failed. Please try again.');
     }
   }
 
@@ -60,9 +62,11 @@ class AdminRepository extends GetxController {
             .map((item) => Report.fromJson(item))
             .toList();
         // json.map((item) => Report.fromJson(item)).toList();
+        Get.snackbar('Success', 'Reports fetched successfully');
       }
     } catch (e) {
       log('fetch reports error is $e');
+      Get.snackbar('Error', 'Failed to fetch reports. Please try again.');
     }
   }
 
@@ -84,6 +88,7 @@ class AdminRepository extends GetxController {
       }
     } catch (e) {
       log('acknowledge report error is $e');
+      Get.snackbar('Error', 'Failed to acknowledge report. Please try again.');
     }
   }
 
@@ -107,9 +112,11 @@ class AdminRepository extends GetxController {
         final json = jsonDecode(response.body);
         log(json['message']);
         // Handle successful creation of safety tip
+        Get.snackbar('Success', 'Safety tip created successfully');
       }
     } catch (e) {
       log('create safety tip error is $e');
+      Get.snackbar('Error', 'Failed to create safety tip. Please try again.');
     }
   }
 }

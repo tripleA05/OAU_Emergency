@@ -47,10 +47,12 @@ class UserRepository extends GetxController {
           // Handle successful report creation
           Get.back();
           fetchReports();
+          Get.snackbar('Success', 'Report created successfully');
         }
       }
     } catch (e) {
       log('create report error is $e');
+      Get.snackbar('Error', 'Failed to create report. Please try again.');
     }
   }
 
@@ -68,10 +70,13 @@ class UserRepository extends GetxController {
         reportList.value = List.from(json['data']).where((item) =>
             item['userId'] == '${_authController.user.value?.id}').map((item) => Report.fromJson(item))
             .toList();
+
         // json.map((item) => Report.fromJson(item)).toList();
+        Get.snackbar('Success', 'Reports fetched successfully');
       }
     } catch (e) {
       log('fetch reports error is $e');
+      Get.snackbar('Error', 'Failed to fetch reports. Please try again.');
     }
   }
 

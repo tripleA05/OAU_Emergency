@@ -142,18 +142,20 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                           widget.text1,
                           style: GoogleFonts.inter(
                             textStyle: const TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12,
-                                color: blackcolor),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: blackcolor,
+                            ),
                           ),
                         ),
                         Text(
                           widget.text2,
                           style: GoogleFonts.poppins(
                             textStyle: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10,
-                                color: blackcolor),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 10,
+                              color: blackcolor,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -174,44 +176,44 @@ class _ReuseRowProfileScreenState extends State<ReuseRowProfileScreen> {
                     ),
                     // const Gap(50),
                     const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isChanged = !isChanged;
-                        });
-                        if (isChanged) {
-                          changedbox = const Icon(
-                            Icons.check_box_outline_blank,
-                            color: Color.fromARGB(255, 23, 6, 138),
-                          );
-                        } else {
-                          changedbox = const Icon(
-                            Icons.check_box,
-                            color: Color.fromARGB(255, 32, 7, 142),
-                          );
-                        }
-                      },
-                      icon: changedbox,
-                    ),
-                    // Container(
-                    //   // height: 5,
-                    //   width: 15,
-                    //   decoration: BoxDecoration(
-                    //     color: widget.isAcknowledged
-                    //         ? const Color.fromARGB(255, 32, 7, 142)
-                    //         : Colors.transparent,
-                    //     borderRadius: BorderRadius.circular(2),
-                    //     border: Border.all(
-                    //       color: const Color.fromARGB(255, 32, 7, 142),
-                    //     ),
-                    //   ),
-                    //   child: widget.isAcknowledged
-                    //       ? const Icon(
-                    //           Icons.check,
-                    //           color: Colors.white,
-                    //         )
-                    //       : null,
+                    // IconButton(
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       isChanged = !isChanged;
+                    //     });
+                    //     if (isChanged) {
+                    //       changedbox = const Icon(
+                    //         Icons.check_box_outline_blank,
+                    //         color: Color.fromARGB(255, 23, 6, 138),
+                    //       );
+                    //     } else {
+                    //       changedbox = const Icon(
+                    //         Icons.check_box,
+                    //         color: Color.fromARGB(255, 32, 7, 142),
+                    //       );
+                    //     }
+                    //   },
+                    //   icon: changedbox,
                     // ),
+                    Container(
+                      // height: 5,
+                      width: 20,
+                      decoration: BoxDecoration(
+                        color: widget.isAcknowledged
+                            ? const Color.fromARGB(255, 32, 7, 142)
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(2),
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 32, 7, 142),
+                        ),
+                      ),
+                      // child: widget.isAcknowledged
+                      //     ? const Icon(
+                      //         Icons.check,
+                      //         color: Colors.white,
+                      //       )
+                      //     : null,
+                    ),
                     // iconButton,
                   ],
                 ),
